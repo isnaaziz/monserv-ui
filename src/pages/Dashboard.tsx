@@ -15,13 +15,13 @@ export function Dashboard() {
 
             {/* Row 1: Welcome (6) + Stats (2+2+2) */}
             <div className="col-span-12 lg:col-span-6">
-                <Card className="h-full relative overflow-hidden bg-gradient-to-br from-emerald-900/40 to-zinc-900/40 border-emerald-500/20 justify-center flex flex-col min-h-[140px]">
+                <Card className="h-full relative overflow-hidden bg-gradient-to-br from-emerald-100 to-white dark:from-emerald-900/40 dark:to-zinc-900/40 border-emerald-200 dark:border-emerald-500/20 justify-center flex flex-col min-h-[140px]">
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 p-4 opacity-10">
                         <Zap className="size-48 text-emerald-500" />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold text-white mb-2">Welcome Back, Arnadea!</h2>
-                        <p className="text-zinc-400">System check passed. Operations normal.</p>
+                        <h2 className="text-2xl font-bold text-zinc-800 dark:text-white mb-2">Welcome Back, Arnadea!</h2>
+                        <p className="text-zinc-500 dark:text-zinc-400">System check passed. Operations normal.</p>
                     </div>
                 </Card>
             </div>

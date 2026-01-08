@@ -32,18 +32,18 @@ export function ActivityCard() {
                         <div key={activity.id} className="flex gap-4 relative group">
                             {/* Timeline line */}
                             {index !== recentActivity.length - 1 && (
-                                <div className="absolute left-2.5 top-8 bottom-[-24px] w-px bg-zinc-800 border-l border-zinc-800 border-dashed group-hover:border-zinc-700 transition-colors" />
+                                <div className="absolute left-2.5 top-8 bottom-[-24px] w-px bg-zinc-300 dark:bg-zinc-800 border-l border-zinc-300 dark:border-zinc-800 border-dashed group-hover:border-zinc-400 dark:group-hover:border-zinc-700 transition-colors" />
                             )}
 
-                            <div className={cn("mt-0.5 relative z-10 bg-zinc-950 rounded-full", colorClass)}>
+                            <div className={cn("mt-0.5 relative z-10 bg-white dark:bg-zinc-950 rounded-full", colorClass)}>
                                 <Icon className="size-5" />
                             </div>
 
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-zinc-200 group-hover:text-white transition-colors">{activity.action}</p>
+                                <p className="text-sm font-medium text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">{activity.action}</p>
                                 <div className="flex items-center gap-2 mt-1">
                                     <span className="text-xs text-emerald-500 font-medium">{activity.user}</span>
-                                    <span className="text-[10px] text-zinc-700">•</span>
+                                    <span className="text-[10px] text-zinc-400 dark:text-zinc-700">•</span>
                                     <span className="text-xs text-zinc-500">{activity.time}</span>
                                 </div>
                             </div>

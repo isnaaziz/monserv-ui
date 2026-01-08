@@ -1,30 +1,42 @@
 
 export const memoryUsageData = [
-    { name: 'App Server', uv: 4000, pv: 2400, amt: 2400, fill: '#10b981' }, // emerald-500
-    { name: 'DB Server', uv: 3000, pv: 1398, amt: 2210, fill: '#3b82f6' }, // blue-500
-    { name: 'Cache Node', uv: 2000, pv: 9800, amt: 2290, fill: '#f59e0b' }, // amber-500
-    { name: 'Worker 1', uv: 2780, pv: 3908, amt: 2000, fill: '#ef4444' }, // red-500
-    { name: 'Worker 2', uv: 1890, pv: 4800, amt: 2181, fill: '#8b5cf6' }, // violet-500
+    { name: 'SG-PROD-12', value: 28, fill: '#c084fc' }, // purple/pink
+    { name: 'DE-PROD-07', value: 36, fill: '#c084fc' },
+    { name: 'CA-PROD-23', value: 68, fill: '#c084fc' },
+    { name: 'ES-PROD-18', value: 92, fill: '#c084fc' },
+    { name: 'IN-PROD-10', value: 112, fill: '#c084fc' },
 ];
 
 export const hardwareHealthData = [
-    { name: 'Healthy', value: 78, fill: '#10b981' },
-    { name: 'Warning', value: 15, fill: '#f59e0b' },
-    { name: 'Critical', value: 7, fill: '#ef4444' },
+    { name: 'Up', value: 1317, fill: '#22c55e' },
+    { name: 'Warning', value: 378, fill: '#eab308' },
+    { name: 'Critical', value: 96, fill: '#ef4444' },
+    { name: 'Unknown', value: 93, fill: '#71717a' },
 ];
 
 export const bandwidthData = [
-    { time: '00:00', upload: 40, download: 24 },
-    { time: '04:00', upload: 30, download: 13 },
-    { time: '08:00', upload: 20, download: 98 },
-    { time: '12:00', upload: 27, download: 39 },
-    { time: '16:00', upload: 18, download: 48 },
-    { time: '20:00', upload: 23, download: 38 },
-    { time: '23:59', upload: 34, download: 43 },
+    { time: '16:00', 'UK-PROD-38': 1650, 'CH-PROD-06': 2450 },
+    { time: '16:30', 'UK-PROD-38': 1700, 'CH-PROD-06': 2350 },
+    { time: '17:00', 'UK-PROD-38': 1300, 'CH-PROD-06': 2300 },
+    { time: '17:30', 'UK-PROD-38': 1600, 'CH-PROD-06': 2100 },
+    { time: '18:00', 'UK-PROD-38': 2300, 'CH-PROD-06': 3000 },
+    { time: '18:30', 'UK-PROD-38': 2400, 'CH-PROD-06': 3200 },
+    { time: '19:00', 'UK-PROD-38': 2650, 'CH-PROD-06': 3250 },
+    { time: '19:30', 'UK-PROD-38': 2850, 'CH-PROD-06': 3300 },
+];
+
+export const serverNodes = [
+    { name: 'DE-PROD-05', color: '#71717a', active: false },
+    { name: 'UK-PROD-38', color: '#3b82f6', active: true },
+    { name: 'CH-PROD-06', color: '#ef4444', active: true },
+    { name: 'CA-PROD-42', color: '#71717a', active: false },
+    { name: 'SG-PROD-20', color: '#71717a', active: false },
 ];
 
 export const cpuData = [
-    { name: 'System', value: 35, fill: '#3b82f6' },
-    { name: 'User', value: 45, fill: '#10b981' },
-    { name: 'Idle', value: 20, fill: '#27272a' },
+    { name: 'IN-PROD-10', value: 60, fill: '#3b82f6' }, // blue
+    { name: 'US-PROD-22', value: 52, fill: '#8b5cf6' }, // purple
+    { name: 'DE-PROD-03', value: 45, fill: '#f87171' }, // red/coral
+    { name: 'CH-PROD-48', value: 40, fill: '#f59e0b' }, // amber/orange
+    { name: 'AU-PROD-27', value: 34, fill: '#eab308' }, // yellow
 ];

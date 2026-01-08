@@ -15,7 +15,7 @@ export function StatCard({ label, value, change, trend, color, icon: Icon = Acti
     const TrendIcon = trend === 'up' ? ArrowUpRight : ArrowDownRight;
 
     return (
-        <Card className="hover:border-zinc-700 transition-all group relative overflow-hidden">
+        <Card className="hover:border-zinc-300 dark:hover:border-zinc-700 transition-all group relative overflow-hidden">
             {/* Background decoration */}
             <div className={cn("absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity", colorStyles[color].split(" ")[0])}>
                 <Icon className="size-24" />
@@ -24,7 +24,7 @@ export function StatCard({ label, value, change, trend, color, icon: Icon = Acti
             <div className="flex justify-between items-start mb-4 relative z-10">
                 <div>
                     <p className="text-zinc-500 text-sm font-medium mb-1">{label}</p>
-                    <h4 className="text-2xl lg:text-3xl font-bold text-zinc-100">{value}</h4>
+                    <h4 className="text-2xl lg:text-3xl font-bold text-zinc-800 dark:text-zinc-100">{value}</h4>
                 </div>
                 <div className={cn("p-2 rounded-lg", colorStyles[color])}>
                     <Icon className="size-5" />
@@ -35,7 +35,7 @@ export function StatCard({ label, value, change, trend, color, icon: Icon = Acti
                     <TrendIcon className="size-4 mr-1" />
                     {change}
                 </span>
-                <span className="text-zinc-600 text-sm">vs last month</span>
+                <span className="text-zinc-400 dark:text-zinc-600 text-sm">vs last month</span>
             </div>
         </Card>
     );
