@@ -1,8 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import { DashboardLayout } from './components/layout/DashboardLayout';
 import { routes } from './routes';
 import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/auth/ProtectedRoute';
+
+// Lazy load Login page
+const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })));
 
 // Loading fallback component
 function PageLoader() {
@@ -16,20 +21,43 @@ function PageLoader() {
   );
 }
 
+function AppRoutes() {
+  const location = useLocation();
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+
+  if (isAuthPage) {
+    return (
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Suspense>
+    );
+  }
+
+  return (
+    <ProtectedRoute>
+      <DashboardLayout>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            {routes.map((route) => (
+              <Route key={route.path} path={route.path} element={route.element} />
+            ))}
+          </Routes>
+        </Suspense>
+      </DashboardLayout>
+    </ProtectedRoute>
+  );
+}
+
 function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <DashboardLayout>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              {routes.map((route) => (
-                <Route key={route.path} path={route.path} element={route.element} />
-              ))}
-            </Routes>
-          </Suspense>
-        </DashboardLayout>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

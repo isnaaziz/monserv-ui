@@ -1,11 +1,13 @@
-import { Search, Bell, Sun, Moon } from 'lucide-react';
+import { Search, Bell, Sun, Moon, LogOut } from 'lucide-react';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
 import { Avatar } from '../ui/Avatar';
 import { useTheme } from '../../context/ThemeContext';
+import { useAuth } from '../../context/AuthContext';
 
 export function Topbar() {
     const { theme, toggleTheme } = useTheme();
+    const { user, logout } = useAuth();
 
     return (
         <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-white/50 dark:bg-zinc-950/50 border-b border-zinc-200 dark:border-zinc-900/50 px-6 py-4 flex items-center justify-between">
@@ -36,13 +38,25 @@ export function Topbar() {
 
                 <div className="h-6 w-px bg-zinc-200 dark:bg-zinc-800 mx-2" />
 
-                <button className="flex items-center gap-3 pl-2 group">
-                    <Avatar src="https://ui-avatars.com/api/?name=Arun+Kumar&background=10b981&color=fff" />
+                <div className="flex items-center gap-3 pl-2 group">
+                    <Avatar src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=10b981&color=fff`} />
                     <div className="hidden lg:flex flex-col items-start">
-                        <span className="text-sm font-medium text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">Arun Kumar</span>
-                        <span className="text-xs text-zinc-500">Super Admin</span>
+                        <span className="text-sm font-medium text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
+                            {user?.name || 'User'}
+                        </span>
+                        <span className="text-xs text-zinc-500">{user?.email || 'user@email.com'}</span>
                     </div>
-                </button>
+                </div>
+
+                <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="text-zinc-500 dark:text-zinc-400 hover:text-red-500 dark:hover:text-red-400"
+                    onClick={logout}
+                    title="Logout"
+                >
+                    <LogOut className="size-5" />
+                </Button>
             </div>
         </header>
     );
