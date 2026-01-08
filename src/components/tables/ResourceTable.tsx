@@ -1,17 +1,17 @@
-import { Card, CardTitle } from '../ui/Card';
-import { resourceTableData } from '../../data/mock';
+import { Card } from '../cards/Card';
+import { resourceTableData } from '../../data/table';
 import { cn } from '../../lib/utils';
 import { MoreHorizontal } from 'lucide-react';
+import { Button } from '../ui/Button';
+import { Badge } from '../ui/Badge';
 
 export function ResourceTable() {
     return (
-        <Card className="col-span-1 lg:col-span-2 h-full">
-            <div className="flex items-center justify-between mb-6">
-                <CardTitle className="mb-0">Resource Utilization</CardTitle>
-                <button className="text-zinc-400 hover:text-zinc-100">
-                    <MoreHorizontal className="size-5" />
-                </button>
-            </div>
+        <Card title="Resource Utilization" className="h-full" action={
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+                <MoreHorizontal className="size-4" />
+            </Button>
+        }>
             <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm text-zinc-400">
                     <thead className="bg-zinc-800/50 text-zinc-200 uppercase text-xs font-semibold">
@@ -42,11 +42,12 @@ export function ResourceTable() {
                                 <td className="px-4 py-3 text-zinc-300">{item.cpu}</td>
                                 <td className="px-4 py-3 text-zinc-300">{item.memory}</td>
                                 <td className="px-4 py-3">
-                                    <div className="flex justify-center">
-                                        {item.status === 'Active' && <div className="text-emerald-500 bg-emerald-500/10 p-1 rounded-full"><div className="size-4 rounded-full border-2 border-current flex items-center justify-center text-[10px]">✓</div></div>}
-                                        {item.status === 'Warning' && <div className="text-amber-500 bg-amber-500/10 p-1 rounded-full"><div className="size-4 rounded-full border-2 border-current flex items-center justify-center text-[10px]">!</div></div>}
-                                        {item.status === 'Maintenance' && <div className="text-red-500 bg-red-500/10 p-1 rounded-full"><div className="size-4 rounded-full border-2 border-current flex items-center justify-center text-[10px]">⚠</div></div>}
-                                    </div>
+                                    <Badge variant={
+                                        item.status === 'Active' ? 'success' :
+                                            item.status === 'Warning' ? 'warning' : 'error'
+                                    }>
+                                        {item.status}
+                                    </Badge>
                                 </td>
                             </tr>
                         ))}

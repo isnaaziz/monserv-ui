@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
 
@@ -8,12 +8,19 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
     return (
-        <div className="flex min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-emerald-500/30">
+        <div className="min-h-screen bg-zinc-950 text-zinc-100 flex font-inter selection:bg-emerald-500/30 selection:text-emerald-500">
+            {/* Sidebar */}
             <Sidebar />
-            <div className="flex-1 flex flex-col pl-16 md:pl-20 lg:pl-24 transition-all duration-300">
+
+            <div className="flex-1 flex flex-col ml-16 md:ml-20 transition-all duration-300">
+                {/* Topbar */}
                 <Topbar />
-                <main className="flex-1 p-6 md:p-8 lg:p-10 max-w-[1900px] mx-auto w-full animate-in fade-in zoom-in-95 duration-500">
-                    {children}
+
+                {/* Main Content */}
+                <main className="flex-1 px-4 py-6 lg:px-6 xl:px-8 overflow-y-auto w-full">
+                    <div className="w-full">
+                        {children}
+                    </div>
                 </main>
             </div>
         </div>
