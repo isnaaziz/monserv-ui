@@ -4,6 +4,7 @@ import { DashboardLayout } from './components/layout/DashboardLayout';
 import { routes } from './routes';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
+import { SSEProvider } from './context/SSEContext';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 
 // Lazy load Login page
@@ -54,9 +55,11 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Router>
-          <AppRoutes />
-        </Router>
+        <SSEProvider>
+          <Router>
+            <AppRoutes />
+          </Router>
+        </SSEProvider>
       </AuthProvider>
     </ThemeProvider>
   );
